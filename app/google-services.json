@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "883764863004",
+    "firebase_url": "https://testloginregisttemplate-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "testloginregisttemplate",
+    "storage_bucket": "testloginregisttemplate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883764863004:android:84ea51ee4d9d4627657fd9",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3GNou6JKpfZfky_VuE4DvX4W5k4Ea-Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883764863004:android:997691193e82a691657fd9",
+        "android_client_info": {
+          "package_name": "com.example.signuploginrealtime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3GNou6JKpfZfky_VuE4DvX4W5k4Ea-Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
