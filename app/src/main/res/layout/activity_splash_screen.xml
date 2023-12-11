@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SplashScreen"
+    android:background="@drawable/mobilkeren">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:gravity="center|start"
+        android:textColor="@color/black"
+        android:textSize="55dp"
+        android:textStyle="bold"
+        android:layout_weight="0"
+        android:text="Welcome to BinusPark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginBottom="50dp"
+        android:textStyle="bold"
+        android:text="Find the best reserved parking space in BINUS University" />
+
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint= "#F7631E"
+        android:padding="20dp"
+        android:textSize="20dp"
+        android:text="Click to Login / Signup" />
+
+</LinearLayout>
