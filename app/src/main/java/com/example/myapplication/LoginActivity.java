@@ -18,7 +18,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView registerRedirectText;
@@ -27,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         registerRedirectText = findViewById(R.id.signupRedirectText);
@@ -37,13 +35,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!validateUsername() | !validatePassword()){
-
                 } else {
-                    checkUser();
+                    validateUser();
                 }
             }
         });
-
         registerRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,11 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-
     public Boolean validateUsername(){
-        String val = loginUsername.getText().toString();
-        if (val.isEmpty()){
-            loginUsername.setError("Username cannot be empty");
+        String str = loginUsername.getText().toString();
+        if (str.isEmpty()){
+            loginUsername.setError("Username must be filled");
             return false;
         } else {
             loginUsername.setError(null);
@@ -66,9 +61,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public Boolean validatePassword(){
-        String val = loginPassword.getText().toString();
-        if (val.isEmpty()){
-            loginPassword.setError("Password cannot be empty");
+        String str = loginPassword.getText().toString();
+        if (str.isEmpty()){
+            loginPassword.setError("Password must be filled");
             return false;
         } else {
             loginPassword.setError(null);
@@ -76,14 +71,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void checkUser(){
+    public void validateUser(){
         String userUsername = loginUsername.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
+        Query validateUserDatabase = reference.orderByChild("username").equalTo(userUsername);
 
-        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        validateUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -93,22 +88,19 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (passwordFromDB.equals(userPassword)){
                         loginUsername.setError(null);
-
-                        //Pass the data using intent
-
-                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
-                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
-                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
-
+                        //ini buat passing data ke profile buat sena kalo mau pake ya
+//                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+//                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+//                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                        //ini MainAtcitivy2 diganti home ya nanti
                         Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
-
                         startActivity(intent);
                     } else {
-                        loginPassword.setError("Invalid Credentials");
+                        loginPassword.setError("Password Incorrect");
                         loginPassword.requestFocus();
                     }
                 } else {
-                    loginUsername.setError("User does not exist");
+                    loginUsername.setError("Username has not been registered");
                     loginUsername.requestFocus();
                 }
             }

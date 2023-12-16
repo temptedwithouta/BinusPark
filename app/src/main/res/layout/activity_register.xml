@@ -38,9 +38,9 @@
                 android:textStyle="bold"
                 android:textColor="@color/lavender"/>
             <EditText
+                android:id="@+id/register_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_name"
                 android:background="@color/BinusParkPurple"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
@@ -50,9 +50,9 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
             <EditText
+                android:id="@+id/register_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_email"
                 android:background="@color/BinusParkPurple"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
@@ -62,9 +62,9 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
             <EditText
+                android:id="@+id/register_username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_username"
                 android:background="@color/BinusParkPurple"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
@@ -74,9 +74,9 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
             <EditText
+                android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_password"
                 android:background="@color/BinusParkPurple"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
@@ -87,9 +87,9 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
             <EditText
+                android:id="@+id/register_phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_phonenumber"
                 android:background="@color/BinusParkPurple"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
@@ -99,18 +99,18 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
             <Button
+                android:id="@+id/register_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Sign Up"
-                android:id="@+id/signup_button"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/BinusParkPurple"
                 app:cornerRadius = "20dp"/>
             <TextView
+                android:id="@+id/loginRedirectText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/loginRedirectText"
                 android:text="or Login"
                 android:layout_gravity="center"
                 android:padding="8dp"
