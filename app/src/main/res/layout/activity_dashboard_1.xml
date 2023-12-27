@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textViewHello"
+        android:layout_width="154dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Binus Park"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="377dp"
+        android:layout_height="72dp"
+        android:background="@drawable/gradient_backgroud"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161">
+
+        <ImageView
+            android:id="@+id/imageViewProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@android:drawable/ic_menu_my_calendar" />
+
+        <TextView
+            android:id="@+id/textViewBinusPark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:text="Hello Amanda"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="238dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:background="#CCCCCC"
+        android:hint="Where do you want to park?"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout2"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHello"
+        app:layout_constraintVertical_bias="0.998"
+        app:menu="@menu/navbar_menu"
+        tools:ignore="NotSibling" />
+
+    <Button
+        android:id="@+id/BookingButton"
+        android:layout_width="305dp"
+        android:layout_height="49dp"
+        android:text="Book NOW!"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.956" />
+
+    <Button
+        android:id="@+id/PickParking"
+        android:layout_width="126dp"
+        android:layout_height="57dp"
+        android:text="Pick Parking"
+        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toEndOf="@+id/editTextSearch"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout2"
+        app:layout_constraintVertical_bias="0.016" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
