@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/LinearLayout2"
+        android:id="@+id/LinearInfromation"
         android:layout_width="377dp"
         android:layout_height="72dp"
         android:background="@drawable/gradient_backgroud"
@@ -63,7 +63,7 @@
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/BookingButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/LinearInfromation"
         app:layout_constraintVertical_bias="0.032" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -89,6 +89,99 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956" />
 
+
+    <RelativeLayout
+        android:id="@+id/RelativeHistory"
+        android:layout_width="204dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        app:layout_constraintVertical_bias="0.112">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_history_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-51dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="74dp"
+            android:text="Recently ... "
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="253dp" />
+
+        <TextView
+            android:id="@+id/InformationParking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="14dp"
+            android:text="to Binus Alam Sutera!"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ParkingStock"
+        android:layout_width="204dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        app:layout_constraintVertical_bias="0.56">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_car_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-51dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="47dp"
+            android:text="48 Parking Left"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="253dp" />
+
+        <TextView
+            android:id="@+id/InformationParking2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="9dp"
+            android:text="Binus Alam Sutera"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/PickParking"
         android:layout_width="126dp"
@@ -98,7 +191,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toEndOf="@+id/editTextSearch"
-        app:layout_constraintTop_toBottomOf="@+id/LinearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/LinearInfromation"
         app:layout_constraintVertical_bias="0.016" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
