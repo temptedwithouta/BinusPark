@@ -6,10 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- ... Bagian lain dari layout ... -->
-
-    <!-- GridLayout untuk InputTime -->
-
     <Button
         android:id="@+id/PickParking"
         android:layout_width="385dp"
@@ -76,7 +72,6 @@
         app:menu="@menu/navbar_menu"
         tools:ignore="NotSibling" />
 
-    <!-- Button untuk Book -->
     <Button
         android:id="@+id/BookButton"
         android:layout_width="0dp"
