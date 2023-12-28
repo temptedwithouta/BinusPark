@@ -8,55 +8,62 @@
 
     <Button
         android:id="@+id/PickParking"
-        android:layout_width="385dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="374dp"
+        android:layout_height="51dp"
         android:text="Pick Parking"
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="308dp" />
+        tools:layout_editor_absoluteY="265dp" />
 
     <RelativeLayout
         android:id="@+id/InputTime"
-        android:layout_width="380dp"
-        android:layout_height="137dp"
+        android:layout_width="379dp"
+        android:layout_height="204dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:columnCount="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="404dp">
+        app:layout_constraintTop_toBottomOf="@+id/PickParking">
 
         <TextView
+            android:id="@+id/informationPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:text="Rp. 15.000,00 / Hour"
-            android:textSize="25dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/editTextStartTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
+            android:layout_width="322dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/informationPrice"
+            android:layout_alignParentStart="true"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="43dp"
             android:drawableLeft="@drawable/ic_history_24"
             android:hint="Select Start Time"
-            android:inputType="text"
             android:padding="8dp" />
 
         <EditText
             android:id="@+id/editTextEndTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
+            android:layout_width="377dp"
+            android:layout_height="51dp"
+            android:layout_below="@+id/editTextStartTime"
+            android:layout_alignParentStart="true"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="9dp"
             android:drawableLeft="@drawable/ic_history_24"
             android:hint="Select End Time"
-            android:inputType="text"
             android:padding="8dp" />
+
 
     </RelativeLayout>
 
@@ -67,22 +74,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar_menu"
         tools:ignore="NotSibling" />
 
     <Button
         android:id="@+id/BookButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="377dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="32dp"
         android:text="Book"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InputTime"
         app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="238dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="156dp"
+        android:layout_weight="1"
+        android:background="#CCCCCC"
+        android:hint="Where do you want to park?"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/PickParking"
+        app:layout_constraintEnd_toStartOf="@+id/changeButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543" />
+
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="184dp"
+        android:text="Change"
+        app:layout_constraintBottom_toTopOf="@+id/PickParking"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="296dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
