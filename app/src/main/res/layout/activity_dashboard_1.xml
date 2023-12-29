@@ -7,6 +7,16 @@
     android:layout_height="match_parent">
 
 
+    <include
+        android:id="@+id/fragmentSearch"
+        layout="@layout/fragment_search"
+        android:layout_width="394dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/RelativeHistory"
+        app:layout_constraintTop_toBottomOf="@+id/informationName"
+        app:layout_constraintVertical_bias="0.09"
+        tools:layout_editor_absoluteX="15dp" />
+
     <TextView
         android:id="@+id/textViewHello"
         android:layout_width="154dp"
@@ -19,52 +29,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/LinearInfromation"
-        android:layout_width="377dp"
-        android:layout_height="72dp"
-        android:background="@drawable/gradient_backgroud"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+    <include
+        android:id="@+id/informationName"
+        layout="@layout/fragment_common_information"
+        android:layout_width="272dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161">
-
-        <ImageView
-            android:id="@+id/imageViewProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@android:drawable/ic_menu_my_calendar" />
-
-        <TextView
-            android:id="@+id/textViewBinusPark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="8dp"
-            android:text="Hello Amanda"
-            android:textSize="24sp" />
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="238dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
-        android:background="#CCCCCC"
-        android:hint="Where do you want to park?"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LinearInfromation"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintTop_toTopOf="@id/textViewHello" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -78,30 +52,19 @@
         app:menu="@menu/navbar_menu"
         tools:ignore="NotSibling" />
 
-    <Button
-        android:id="@+id/BookingButton"
-        android:layout_width="305dp"
-        android:layout_height="49dp"
-        android:text="Book NOW!"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
-
 
     <RelativeLayout
         android:id="@+id/RelativeHistory"
         android:layout_width="204dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="48dp"
+
         android:background="@color/grey"
-        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+
+        app:layout_constraintBottom_toTopOf="@+id/ParkingStock"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
-        app:layout_constraintVertical_bias="0.112">
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:layout_width="51dp"
@@ -140,14 +103,14 @@
         android:id="@+id/ParkingStock"
         android:layout_width="204dp"
         android:layout_height="85dp"
-        android:layout_marginBottom="8dp"
+
+        android:layout_marginBottom="216dp"
+
         android:background="@color/grey"
-        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
-        app:layout_constraintVertical_bias="0.56">
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:layout_width="51dp"
@@ -183,16 +146,13 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/PickParking"
-        android:layout_width="126dp"
-        android:layout_height="57dp"
-        android:text="Pick Parking"
-        app:layout_constraintBottom_toTopOf="@+id/BookingButton"
+        android:id="@+id/BookingButton"
+        android:layout_width="305dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="32dp"
+        android:text="Book NOW!"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.419"
-        app:layout_constraintStart_toEndOf="@+id/editTextSearch"
-        app:layout_constraintTop_toBottomOf="@+id/LinearInfromation"
-        app:layout_constraintVertical_bias="0.016" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
