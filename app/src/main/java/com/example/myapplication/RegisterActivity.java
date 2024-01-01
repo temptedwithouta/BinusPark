@@ -13,38 +13,38 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity {
+public class    RegisterActivity extends AppCompatActivity {
 
-    EditText signupName, signupUsername, signupEmail, signupPassword, signupPhonenum;
+    EditText registerName, registerUsername, registerEmail, registerPassword, registerPhonenumber;
     TextView loginRedirectText;
-    Button signupButton;
+    Button registerButton;
     FirebaseDatabase database;
-    DatabaseReference reference;
+    DatabaseReference dbReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        signupName = findViewById(R.id.signup_name);
-        signupEmail = findViewById(R.id.signup_email);
-        signupUsername = findViewById(R.id.signup_username);
-        signupPassword = findViewById(R.id.signup_password);
-        signupPhonenum = findViewById(R.id.signup_phonenumber);
+        registerName = findViewById(R.id.register_name);
+        registerEmail = findViewById(R.id.register_email);
+        registerUsername = findViewById(R.id.register_username);
+        registerPassword = findViewById(R.id.register_password);
+        registerPhonenumber = findViewById(R.id.register_phonenumber);
         loginRedirectText = findViewById(R.id.loginRedirectText);
-        signupButton = findViewById(R.id.signup_button);
+        registerButton = findViewById(R.id.register_button);
 
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 database = FirebaseDatabase.getInstance();
-                reference = database.getReference("users");
-                String name = signupName.getText().toString();
-                String email = signupEmail.getText().toString();
-                String username = signupUsername.getText().toString();
-                String password = signupPassword.getText().toString();
-                String phonenum = signupPhonenum.getText().toString();
+                dbReference = database.getReference("users");
+                String name = registerName.getText().toString();
+                String email = registerEmail.getText().toString();
+                String username = registerUsername.getText().toString();
+                String password = registerPassword.getText().toString();
+                String phonenum = registerPhonenumber.getText().toString();
                 UserModel user = new UserModel(name, email, username, password, Integer.parseInt(phonenum));
-                reference.child(username).setValue(user);
+                dbReference.child(username).setValue(user);
                 Toast.makeText(RegisterActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include
+        android:id="@+id/fragmentSearch"
+        layout="@layout/fragment_search"
+        android:layout_width="394dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/RelativeHistory"
+        app:layout_constraintTop_toBottomOf="@+id/informationName"
+        app:layout_constraintVertical_bias="0.09"
+        tools:layout_editor_absoluteX="15dp" />
+
+    <TextView
+        android:id="@+id/textViewHello"
+        android:layout_width="154dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
+        android:text="Binus Park"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/informationName"
+        layout="@layout/fragment_common_information"
+        android:layout_width="272dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewHello" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHello"
+        app:layout_constraintVertical_bias="0.998"
+        app:menu="@menu/navbar_menu"
+        tools:ignore="NotSibling" />
+
+
+    <RelativeLayout
+        android:id="@+id/RelativeHistory"
+        android:layout_width="204dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="48dp"
+
+        android:background="@color/grey"
+
+        app:layout_constraintBottom_toTopOf="@+id/ParkingStock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_history_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-51dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="74dp"
+            android:text="Recently ... "
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="253dp" />
+
+        <TextView
+            android:id="@+id/InformationParking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="14dp"
+            android:text="to Binus Alam Sutera!"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ParkingStock"
+        android:layout_width="204dp"
+        android:layout_height="85dp"
+
+        android:layout_marginBottom="216dp"
+
+        android:background="@color/grey"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_car_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-51dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="47dp"
+            android:text="48 Parking Left"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="253dp" />
+
+        <TextView
+            android:id="@+id/InformationParking2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="9dp"
+            android:text="Binus Alam Sutera"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/BookingButton"
+        android:layout_width="305dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="32dp"
+        android:text="Book NOW!"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
