@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         passwordHere = findViewById(R.id.password);
         backBtn = findViewById(R.id.back);
         updateProfileBtn = findViewById(R.id.profile_update);
-        keluar = findViewById(R.id.logout_button);
+
 
         Intent receivedIntent = getIntent();
         if (receivedIntent != null && receivedIntent.hasExtra("email")) {
