@@ -3,6 +3,7 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
+    <color name="purple">#613EEA</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -10,4 +11,5 @@
     <color name="lavender">#8692f7</color>
     <color name="grey">#9A9A9A</color>
     <color name="BinusParkPurple">#613EEA</color>
+    <color name="gray">#757F8C</color>
 </resources>
