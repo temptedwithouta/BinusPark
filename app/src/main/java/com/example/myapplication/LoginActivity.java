@@ -89,11 +89,11 @@ public class LoginActivity extends AppCompatActivity {
                     if (passwordFromDB.equals(userPassword)){
                         loginUsername.setError(null);
                         //ini buat passing data ke profile buat sena kalo mau pake ya
-//                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
-//                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
-//                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                        String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+                        String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                        String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
                         //ini MainAtcitivy2 diganti home ya nanti
-                        Intent intent = new Intent(LoginActivity.this, MainActivity2.class);
+                        Intent intent = new Intent(LoginActivity.this, ProfileFragment.class);
                         startActivity(intent);
                     } else {
                         loginPassword.setError("Password Incorrect");
