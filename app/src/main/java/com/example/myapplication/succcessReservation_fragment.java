@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class succcessReservation_fragment extends Fragment {
-private succcessReservation_adapter adapter;
+private SuccessReservationAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstance){
         View rootView = inflater.inflate(R.layout.reservation_success,containter, false);
 
         RecyclerView recyclerView = rootView.findViewById(R.id.reservationRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new succcessReservation_adapter();
+        adapter = new SuccessReservationAdapter();
         recyclerView.setAdapter(adapter);
 
         //Buat Database dulu buat nampilin datanya
