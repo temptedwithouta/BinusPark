@@ -1,8 +1,10 @@
 package com.example.myapplication;// IntentHelper.java
 
+//Initial library imports
 import android.content.Context;
 import android.content.Intent;
 
+//Helps intent passing for starting dashboard activity
 public class IntentHelper {
 
     public static void startDashboardActivity(Context context, String name, String email, String username) {
@@ -12,14 +14,4 @@ public class IntentHelper {
         intent.putExtra("username", username);
         context.startActivity(intent);
     }
-
-    public static void startProfileActivity(Context context, String name, String email, String username) {
-        Intent intent = new Intent(context, ProfileActivity.class);
-        intent.putExtra("name", name);
-        intent.putExtra("email", email);
-        intent.putExtra("username", username);
-        context.startActivity(intent);
-    }
-
-    // You can create similar methods for other classes if needed
 }
