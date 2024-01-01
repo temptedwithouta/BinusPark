@@ -3,26 +3,19 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
-
-public class ProfileFragment extends Fragment{
+public class ProfileActivity extends AppCompatActivity {
     ImageButton backBtn;
     EditText nameHere;
     EditText emailHere;
@@ -33,43 +26,32 @@ public class ProfileFragment extends Fragment{
 
     UserModel currentUserModel;
 
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_profile, container, false);
-        nameHere = view.findViewById(R.id.full_name);
-        emailHere = view.findViewById(R.id.email);
-        phoneHere = view.findViewById(R.id.phone_number);
-        passwordHere = view.findViewById(R.id.password);
-        backBtn = view.findViewById(R.id.back);
-        updateProfileBtn = view.findViewById(R.id.profile_update);
-        keluar = view.findViewById(R.id.logout_button);
-        // Retrieve the Intent from the hosting Activity
-        Intent receivedIntent = getActivity().getIntent();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
 
+        nameHere = findViewById(R.id.full_name);
+        emailHere = findViewById(R.id.email);
+        phoneHere = findViewById(R.id.phone_number);
+        passwordHere = findViewById(R.id.password);
+        backBtn = findViewById(R.id.back);
+        updateProfileBtn = findViewById(R.id.profile_update);
+        keluar = findViewById(R.id.logout_button);
+
+        Intent receivedIntent = getIntent();
         if (receivedIntent != null && receivedIntent.hasExtra("email")) {
             String emails = receivedIntent.getStringExtra("email");
-            // Use the retrieved value as needed
             getUserData(emails);
         }
 
-        updateProfileBtn.setOnClickListener(v->{
+        updateProfileBtn.setOnClickListener(v -> {
             if (receivedIntent != null && receivedIntent.hasExtra("email")) {
                 String emails = receivedIntent.getStringExtra("email");
-                // Use the retrieved value as needed
                 editBtnClick(emails);
             }
         });
-
-        return view;
-
     }
-
 
     void editBtnClick(String email) {
         String newFullName = nameHere.getText().toString();
@@ -81,7 +63,9 @@ public class ProfileFragment extends Fragment{
         }
     }
 
-
+    public void showToast(String message){
+        Toast.makeText(ProfileActivity.this,message,Toast.LENGTH_LONG).show();
+    }
     void updateToFirebase(String email, String name) {
         com.example.myapplication.FirebaseUtil.currentUserDetails(email, new com.example.myapplication.FirebaseUtil.UserDetailListener() {
             @Override
@@ -91,9 +75,9 @@ public class ProfileFragment extends Fragment{
                 userRef.child("name").setValue(name)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                               showToast(getContext(), "Updated successfully");
+                               showToast("Updated successfully");
                             } else {
-                                showToast(getContext(), "Edit failed");
+                                showToast("Edit failed");
                             }
                         });
             }
@@ -136,9 +120,6 @@ public class ProfileFragment extends Fragment{
                 // Handle case when user data is not found in Realtime Database
             }
         });
-    }
-    public static  void showToast(Context context, String message){
-        Toast.makeText(context,message,Toast.LENGTH_LONG).show();
     }
 
 

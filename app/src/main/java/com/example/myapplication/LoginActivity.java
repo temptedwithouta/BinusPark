@@ -93,7 +93,7 @@ public class  LoginActivity extends AppCompatActivity {
                         String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
                         String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
                         //ini MainAtcitivy2 diganti home ya nanti
-                        Intent intent = new Intent(LoginActivity.this, ProfileFragment.class);
+                        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                         startActivity(intent);
                     } else {
                         loginPassword.setError("Password Incorrect");
