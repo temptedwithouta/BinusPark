@@ -25,6 +25,9 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             />
@@ -34,18 +37,17 @@
         <activity
             android:name=".SplashScreen"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".DashboardActivity"
             android:exported="false"/>
 
         <activity android:name=".ReservationActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
         <service
             android:name=".PushNotificationService"
             android:exported="true"

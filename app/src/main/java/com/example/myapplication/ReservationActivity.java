@@ -27,7 +27,19 @@ public class ReservationActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 if (item.getItemId() == R.id.action_home) {
                     // Navigasi kembali ke DashboardActivity
-                    startActivity(new Intent(ReservationActivity.this, DashboardActivity.class));
+                    Intent receivedIntent = getIntent();
+                    if (receivedIntent != null) {
+                        String nameFromIntent = receivedIntent.getStringExtra("name");
+                        String emailFromIntent = receivedIntent.getStringExtra("email");
+                        String usernameFromIntent = receivedIntent.getStringExtra("username");
+
+                        // Pass the Intent data to ProfileActivity
+                        Intent profileIntent = new Intent(ReservationActivity.this, DashboardActivity.class);
+                        profileIntent.putExtra("name", nameFromIntent);
+                        profileIntent.putExtra("email", emailFromIntent);
+                        profileIntent.putExtra("username", usernameFromIntent);
+                        startActivity(profileIntent);
+                    }
                     finish();
                     return true;
                 } else if (item.getItemId() == R.id.action_calender) {
@@ -36,7 +48,19 @@ public class ReservationActivity extends AppCompatActivity {
                     return true;
                 } else if (item.getItemId() == R.id.profile) {
                     // Tampilkan ProfileFragment atau navigasi ke halaman profil
+                    Intent receivedIntent = getIntent();
+                    if (receivedIntent != null) {
+                        String nameFromIntent = receivedIntent.getStringExtra("name");
+                        String emailFromIntent = receivedIntent.getStringExtra("email");
+                        String usernameFromIntent = receivedIntent.getStringExtra("username");
 
+                        // Pass the Intent data to ProfileActivity
+                        Intent profileIntent = new Intent(ReservationActivity.this, ProfileActivity.class);
+                        profileIntent.putExtra("name", nameFromIntent);
+                        profileIntent.putExtra("email", emailFromIntent);
+                        profileIntent.putExtra("username", usernameFromIntent);
+                        startActivity(profileIntent);
+                    }
                     return true;
                 }
                 return false;
