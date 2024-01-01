@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,9 +34,18 @@ private DatabaseReference dbReference;
         adapter = new SuccessReservationAdapter();
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(position ->{
+        getResevationData();
 
+        //Buat pindah funsgi pindah map
+        Button openMapButton = rootView.findViewById(R.id.openMap);
+        openMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Manggil function open map, diisi yang bang dibawah intennnya
+                openMap();
+            }
         });
+
         return  rootView;
     }
 
@@ -58,5 +67,9 @@ private DatabaseReference dbReference;
 
             }
         });
+    }
+
+    private void openMap(){
+
     }
 }
