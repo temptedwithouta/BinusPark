@@ -33,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
                         String usernameFromIntent = receivedIntent.getStringExtra("username");
 
                         // Pass the Intent data to ProfileActivity
-                        Intent profileIntent = new Intent(DashboardActivity.this, ReservationActivity.class);
+                        Intent profileIntent = new Intent(DashboardActivity.this, UniversityList.class);
                         profileIntent.putExtra("name", nameFromIntent);
                         profileIntent.putExtra("email", emailFromIntent);
                         profileIntent.putExtra("username", usernameFromIntent);

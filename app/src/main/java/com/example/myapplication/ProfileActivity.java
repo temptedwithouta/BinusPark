@@ -91,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
                         String usernameFromIntent = receivedIntent.getStringExtra("username");
 
                         // Pass the Intent data to ProfileActivity
-                        Intent profileIntent = new Intent(ProfileActivity.this, ReservationActivity.class);
+                        Intent profileIntent = new Intent(ProfileActivity.this, UniversityList.class);
                         profileIntent.putExtra("name", nameFromIntent);
                         profileIntent.putExtra("email", emailFromIntent);
                         profileIntent.putExtra("username", usernameFromIntent);

@@ -37,16 +37,45 @@ public class UniversityList extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 if (item.getItemId() == R.id.action_home) {
-                    startActivity(new Intent(UniversityList.this, DashboardActivity.class));
+                    // Navigasi kembali ke DashboardActivity
+                    Intent receivedIntent = getIntent();
+                    if (receivedIntent != null) {
+                        String nameFromIntent = receivedIntent.getStringExtra("name");
+                        String emailFromIntent = receivedIntent.getStringExtra("email");
+                        String usernameFromIntent = receivedIntent.getStringExtra("username");
+
+                        // Pass the Intent data to ProfileActivity
+                        Intent profileIntent = new Intent(UniversityList.this, DashboardActivity.class);
+                        profileIntent.putExtra("name", nameFromIntent);
+                        profileIntent.putExtra("email", emailFromIntent);
+                        profileIntent.putExtra("username", usernameFromIntent);
+                        startActivity(profileIntent);
+                    }
                     finish();
                     return true;
-                } else // Tampilkan ProfileFragment atau navigasi ke halaman profil
-                    if (item.getItemId() == R.id.action_calender) {
+                } else if (item.getItemId() == R.id.action_calender) {
                     // Navigasi ke ReservationActivity
-                    startActivity(new Intent(UniversityList.this, ReservationActivity.class));
                     finish();
                     return true;
-                } else return item.getItemId() == R.id.profile;
+                } else if (item.getItemId() == R.id.profile) {
+                    // Navigasi ke ReservationActivity
+                    Intent receivedIntent = getIntent();
+                    if (receivedIntent != null) {
+                        String nameFromIntent = receivedIntent.getStringExtra("name");
+                        String emailFromIntent = receivedIntent.getStringExtra("email");
+                        String usernameFromIntent = receivedIntent.getStringExtra("username");
+
+                        // Pass the Intent data to ProfileActivity
+                        Intent profileIntent = new Intent(UniversityList.this, ProfileActivity.class);
+                        profileIntent.putExtra("name", nameFromIntent);
+                        profileIntent.putExtra("email", emailFromIntent);
+                        profileIntent.putExtra("username", usernameFromIntent);
+                        startActivity(profileIntent);
+                    }
+                    finish();
+                    return true;
+                }
+                return false;
             }
         });
 
