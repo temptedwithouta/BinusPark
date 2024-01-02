@@ -40,16 +40,13 @@ public class UniversityList extends AppCompatActivity {
                     startActivity(new Intent(UniversityList.this, DashboardActivity.class));
                     finish();
                     return true;
-                } else if (item.getItemId() == R.id.action_calender) {
+                } else // Tampilkan ProfileFragment atau navigasi ke halaman profil
+                    if (item.getItemId() == R.id.action_calender) {
                     // Navigasi ke ReservationActivity
                     startActivity(new Intent(UniversityList.this, ReservationActivity.class));
                     finish();
                     return true;
-                } else if (item.getItemId() == R.id.profile) {
-                    // Tampilkan ProfileFragment atau navigasi ke halaman profil
-                    return true;
-                }
-                return false;
+                } else return item.getItemId() == R.id.profile;
             }
         });
 

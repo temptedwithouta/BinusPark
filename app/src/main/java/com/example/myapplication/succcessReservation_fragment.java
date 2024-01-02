@@ -1,9 +1,11 @@
 package com.example.myapplication;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -23,6 +25,7 @@ import java.util.List;
 public class succcessReservation_fragment extends Fragment {
     private SuccessReservationAdapter adapter;
     private DatabaseReference dbReference;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter, Bundle savedInstance){
         View rootView = inflater.inflate(R.layout.reservation_success,containter, false);
@@ -70,6 +73,20 @@ public class succcessReservation_fragment extends Fragment {
     }
 
     private void openMap(){
+        ReservationActivity reservation = (ReservationActivity)getActivity();
 
+        String title = reservation.title;
+
+        String latitude = reservation.latitude;
+
+        String longitude = reservation.longitude;
+
+        Intent intent = new Intent(getActivity(), MapActivity.class);
+
+        intent.putExtra("title", title);
+
+        intent.putExtra("latitude", latitude);
+
+        intent.putExtra("longitude", longitude);
     }
 }

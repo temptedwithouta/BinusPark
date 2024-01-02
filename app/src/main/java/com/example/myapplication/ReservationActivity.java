@@ -12,6 +12,12 @@ import android.view.MenuItem;
 
 public class ReservationActivity extends AppCompatActivity {
 
+    public String title;
+
+    public String latitude;
+
+    public String longitude;
+
     public static Intent createIntent(Context context) {
         return new Intent(context, ReservationActivity.class);
     }
@@ -66,6 +72,12 @@ public class ReservationActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        title = getIntent().getExtras().getString("title");
+
+        latitude = getIntent().getExtras().getString("latitude");
+
+        longitude = getIntent().getExtras().getString("longitude");
 
         if (userHasReservation()) {
             showSuccessReservationFragment();

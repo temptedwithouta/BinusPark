@@ -10,15 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.MapActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.ReservationActivity;
 import com.example.myapplication.model.University;
 import com.example.myapplication.viewHolder.UniversityViewHolder;
 
 import java.util.ArrayList;
 
 public class UniversityListAdapter extends RecyclerView.Adapter<UniversityViewHolder> {
-    private ArrayList<University> universityList;
+    private final ArrayList<University> universityList;
 
-    private Context context;
+    private final Context context;
 
     public UniversityListAdapter(ArrayList<University> universityList, Context context){
         this.universityList = universityList;
@@ -51,7 +52,9 @@ public class UniversityListAdapter extends RecyclerView.Adapter<UniversityViewHo
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(context, MapActivity.class);
+                Intent intent = new Intent(context, ReservationActivity.class);
+
+                intent.putExtra("location", university.getLocation());
 
                 intent.putExtra("title", "@" + university.getName() + " " + university.getLocation());
 

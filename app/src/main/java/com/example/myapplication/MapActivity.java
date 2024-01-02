@@ -34,7 +34,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         backBtn = findViewById(R.id.backBtn);
 
-        title = getIntent().getExtras().getString("title").toString();
+        title = getIntent().getExtras().getString("title");
 
         latitude = Double.parseDouble(getIntent().getExtras().getString("latitude"));
 

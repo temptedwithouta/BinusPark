@@ -143,7 +143,6 @@ public class ProfileActivity extends AppCompatActivity {
         String newFullName = nameHere.getText().toString();
         if (newFullName.isEmpty() || newFullName.length() < 2) {
             nameHere.setError("Full name must be at least 2 characters");
-            return;
         } else {
             updateToFirebase(email, newFullName);
         }
