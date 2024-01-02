@@ -50,9 +50,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     }
 
     public void backBtnOnClick(View v){
-//        Intent intent = new Intent(MapActivity.this, MainActivity.class);
-//
-//        startActivity(intent);
+        Intent intent = new Intent(MapActivity.this, ReservationActivity.class);
+
+        startActivity(intent);
     }
 
     /**
