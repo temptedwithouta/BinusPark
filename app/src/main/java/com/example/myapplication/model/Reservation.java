@@ -1,14 +1,14 @@
-package com.example.myapplication;
+package com.example.myapplication.model;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class reservationModel {
+public class Reservation {
     private LocalDateTime startTime, endTime;
     private long durasi;
     private double harga, totalHarga;
 
-    public reservationModel(LocalDateTime startTime, LocalDateTime endTime, int harga){
+    public Reservation(LocalDateTime startTime, LocalDateTime endTime, int harga){
         this.startTime = startTime;
         this.endTime = endTime;
         this.harga = harga;

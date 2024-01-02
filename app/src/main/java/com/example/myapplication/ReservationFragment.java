@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.model.Reservation;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -59,7 +60,7 @@ public class ReservationFragment extends Fragment {
             long durasi = calculateDuration(starTimeData,endTimeData);
             double totalHarga = calculateTotalHarga(durasi);
 
-            reservationModel reservation = new reservationModel(starTimeData, endTimeData, (int) totalHarga);
+            Reservation reservation = new Reservation(starTimeData, endTimeData, (int) totalHarga);
 
             String key = dbReference.push().getKey();
             if(key!= null){

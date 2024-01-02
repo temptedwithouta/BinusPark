@@ -8,14 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.model.Reservation;
+
 import java.util.List;
 
 public class SuccessReservationAdapter extends RecyclerView.Adapter<SuccessReservationAdapter.ReservationViewHolder> {
 
-    private List<reservationModel> reservationList;
+    private List<Reservation> reservationList;
     private OnItemClickListener listener;
 
-    public void setReservationList(List<reservationModel> reservationList) {
+    public void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
         notifyDataSetChanged();
     }
@@ -33,7 +35,7 @@ public class SuccessReservationAdapter extends RecyclerView.Adapter<SuccessReser
 
     @Override
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
-        reservationModel currentReservation = reservationList.get(position);
+        Reservation currentReservation = reservationList.get(position);
 
         // Customize based on your item_reservation.xml layout
         holder.textViewStartTime.setText("Start Time: " + currentReservation.getStartTime().toString());

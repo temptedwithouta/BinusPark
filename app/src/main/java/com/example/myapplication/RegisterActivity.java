@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -43,7 +44,7 @@ public class    RegisterActivity extends AppCompatActivity {
                 String username = registerUsername.getText().toString();
                 String password = registerPassword.getText().toString();
                 String phonenum = registerPhonenumber.getText().toString();
-                UserModel user = new UserModel(name, email, username, password, Integer.parseInt(phonenum));
+                User user = new User(name, email, username, password, Integer.parseInt(phonenum));
                 dbReference.child(username).setValue(user);
                 Toast.makeText(RegisterActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

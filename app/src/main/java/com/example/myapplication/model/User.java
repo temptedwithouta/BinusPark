@@ -1,6 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.model;
 
-public class UserModel {
+public class User {
     String name, email, username, password;
     int phonenum;
     public String getName() {
@@ -33,13 +33,13 @@ public class UserModel {
     public void setPhonenum(int phonenum) {
         this.phonenum = phonenum;
     }
-    public UserModel(String name, String email, String username, String password, int phonenum) {
+    public User(String name, String email, String username, String password, int phonenum) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.password = password;
         this.phonenum = phonenum;
     }
-    public UserModel() {
+    public User() {
     }
 }

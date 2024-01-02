@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     Button updateProfileBtn;
     TextView keluar;
 
-    UserModel currentUserModel;
+    User currentUserModel;
 
     //UI initialization
     @Override
