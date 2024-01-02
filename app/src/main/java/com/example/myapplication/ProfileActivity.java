@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         passwordHere = findViewById(R.id.password);
         backBtn = findViewById(R.id.back);
         updateProfileBtn = findViewById(R.id.profile_update);
+        Switch swtBtn = findViewById(R.id.switch1);
 
         //Displaying data of the authenticated user
         Intent receivedIntent = getIntent();
@@ -116,6 +120,19 @@ public class ProfileActivity extends AppCompatActivity {
             if (receivedIntent != null && receivedIntent.hasExtra("email")) {
                 String emails = receivedIntent.getStringExtra("email");
                 editBtnClick(emails);
+            }
+        });
+        //Switch light to dark mode settings
+        swtBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    buttonView.setText("Dark Mode");
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    buttonView.setText("Light Mode");
+                }
             }
         });
     }
