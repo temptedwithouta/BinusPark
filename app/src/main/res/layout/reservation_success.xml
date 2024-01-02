@@ -46,8 +46,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reservationRecyclerView"
-        android:layout_width="507dp"
-        android:layout_height="348dp"
+        android:layout_width="395dp"
+        android:layout_height="247dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.601"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintVertical_bias="0.054">
 
-        <include layout="@layout/fragment_suceess_reservation"/>
+        <include layout="@layout/fragment_suceess_reservation" />
     </androidx.recyclerview.widget.RecyclerView>
 
 
