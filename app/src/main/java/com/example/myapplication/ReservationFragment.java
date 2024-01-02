@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,80 +15,103 @@ import com.example.myapplication.model.Reservation;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
 public class ReservationFragment extends Fragment {
 
+    private static final String RESERVATION_NODE = "reserves";
     private EditText editTextStart, editTextEnd;
     private Button bookButton;
 
     private DatabaseReference dbReference;
-    public ReservationFragment(){
 
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView =  inflater.inflate(R.layout.actvity_reservation, container, false);
+        View rootView = inflater.inflate(R.layout.actvity_reservation, container, false);
 
         editTextStart = rootView.findViewById(R.id.editTextStartTime);
         editTextEnd = rootView.findViewById(R.id.editTextEndTime);
         bookButton = rootView.findViewById(R.id.BookButton);
 
-        dbReference = FirebaseDatabase.getInstance().getReference("reserves");
+        dbReference = FirebaseDatabase.getInstance().getReference(RESERVATION_NODE);
 
-        bookButton.setOnClickListener(e -> bookReservation()); //Buat ngelakuin Book
+        bookButton.setOnClickListener(e -> bookReservation()); // To perform booking
 
         return rootView;
     }
 
-    private void bookReservation(){
-        String starTime = editTextStart.getText().toString().trim();
-        String endTime = editTextEnd.getText().toString().trim();
+    private void bookReservation() {
+        String startTimeString = editTextStart.getText().toString().trim();
+        String endTimeString = editTextEnd.getText().toString().trim();
 
-        if(starTime.isEmpty() || endTime.isEmpty()){
-            Toast.makeText(requireContext(), "Please Enter Start Time and End Time", Toast.LENGTH_SHORT).show();
-
+        if (startTimeString.isEmpty() || endTimeString.isEmpty()) {
+            showToast("Please Enter Start Time and End Time");
             return;
         }
-        LocalDateTime starTimeData = converStringtoLocalDateTime(starTime);
-        LocalDateTime endTimeData = converStringtoLocalDateTime(endTime);
 
-        if(starTimeData != null || endTimeData != null){
+        if (!isValidTimeFormat(startTimeString) || !isValidTimeFormat(endTimeString)) {
+            showToast("Please use the format HH:mm");
+            return;
+        }
 
-            long durasi = calculateDuration(starTimeData,endTimeData);
-            double totalHarga = calculateTotalHarga(durasi);
+        LocalTime startTime = LocalTime.parse(startTimeString, DateTimeFormatter.ofPattern("HH:mm"));
+        LocalTime endTime = LocalTime.parse(endTimeString, DateTimeFormatter.ofPattern("HH:mm"));
 
-            Reservation reservation = new Reservation(starTimeData, endTimeData, (int) totalHarga);
+        if (startTime.isAfter(endTime)) {
+            showToast("End time must be after start time");
+            return;
+        }
 
-            String key = dbReference.push().getKey();
-            if(key!= null){
-                dbReference.child(key).setValue(reservation);
-                Toast.makeText(requireContext(), "Reservation Booked Successfully", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(requireContext(), "Failed to Book Reservation", Toast.LENGTH_SHORT).show();
-            }
+        long duration = ChronoUnit.MINUTES.between(startTime, endTime);
+        double totalHarga = calculateTotalHarga(duration);
+
+        Reservation reservation = new Reservation(startTime.atDate(LocalDate.now()), endTime.atDate(LocalDate.now()), (int) totalHarga);
+
+        // Assuming user has selected a location before booking
+        String selectedLocation = "Binus Alam Sutera";
+
+        String key = dbReference.push().getKey();
+        if (key != null) {
+            saveReservationToFirebase(key, reservation);
+            navigateToPaymentActivity(selectedLocation, (int) totalHarga);
+        } else {
+            showToast("Failed to Book Reservation");
         }
     }
 
-    private LocalDateTime converStringtoLocalDateTime(String timeString){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+    private void showToast(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void saveReservationToFirebase(String key, Reservation reservationModel) {
+        dbReference.child(key).setValue(reservationModel)
+                .addOnSuccessListener(e -> showToast("Reservation Booked Successfully"))
+                .addOnFailureListener(f -> showToast("Failed to Book Reservation"));
+    }
+
+    private boolean isValidTimeFormat(String timeString) {
         try {
-            return LocalDateTime.parse(timeString, formatter);
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
+            LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
         }
     }
 
-    private long calculateDuration(LocalDateTime startTime, LocalDateTime endTime){
-        return startTime.until(endTime, ChronoUnit.MINUTES);
+    private double calculateTotalHarga(long duration) {
+        double hargaPerHour = 15000;
+        return (duration / 60.0) * hargaPerHour;
     }
 
-    private double calculateTotalHarga(long durasi){
-        double hargaPerHour = 15000;
-        return (durasi/60.0)*hargaPerHour;
+    private void navigateToPaymentActivity(String location, int price) {
+        Intent paymentIntent = PaymentActivity.createIntent(requireContext());
+        paymentIntent.putExtra("location", location);
+        paymentIntent.putExtra("price", price);
+        startActivity(paymentIntent);
     }
 }

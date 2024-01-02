@@ -71,6 +71,10 @@ public class PaymentActivity extends AppCompatActivity
     });
   }
 
+  public static Intent createIntent(Context context) {
+    return new Intent(context, PaymentActivity.class);
+  }
+
   public String PriceFormat(int amount)
   {
     Locale idr = new Locale("id", "ID");
