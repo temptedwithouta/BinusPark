@@ -2,7 +2,7 @@ package com.example.myapplication.model;
 
 public class User {
     String name, email, username, password;
-    int phonenum;
+    int phone;
     public String getName() {
         return name;
     }
@@ -27,18 +27,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getPhonenum() {
-        return phonenum;
+    public int getphone() {
+        return phone;
     }
-    public void setPhonenum(int phonenum) {
-        this.phonenum = phonenum;
+    public void setphone(int phone) {
+        this.phone = phone;
     }
-    public User(String name, String email, String username, String password, int phonenum) {
+    public User(String name, String email, String username, String password, int phone) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.phonenum = phonenum;
+        this.phone = phone;
     }
     public User() {
     }

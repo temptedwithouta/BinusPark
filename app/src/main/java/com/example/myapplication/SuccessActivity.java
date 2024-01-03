@@ -21,7 +21,7 @@ public class SuccessActivity extends AppCompatActivity {
     btn1.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent back = new Intent(SuccessActivity.this, MainActivity2.class);
+        Intent back = new Intent(SuccessActivity.this, DashboardActivity.class);
         startActivity(back);
       }
     });

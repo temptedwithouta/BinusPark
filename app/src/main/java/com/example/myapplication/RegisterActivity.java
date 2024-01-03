@@ -43,8 +43,8 @@ public class    RegisterActivity extends AppCompatActivity {
                 String email = registerEmail.getText().toString();
                 String username = registerUsername.getText().toString();
                 String password = registerPassword.getText().toString();
-                String phonenum = registerPhonenumber.getText().toString();
-                User user = new User(name, email, username, password, Integer.parseInt(phonenum));
+                String phone = registerPhonenumber.getText().toString();
+                User user = new User(name, email, username, password, Integer.parseInt(phone));
                 dbReference.child(username).setValue(user);
                 Toast.makeText(RegisterActivity.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
