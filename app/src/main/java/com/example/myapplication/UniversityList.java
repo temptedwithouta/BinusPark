@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.myapplication.adapter.UniversityListAdapter;
 import com.example.myapplication.model.University;
@@ -98,6 +99,40 @@ public class UniversityList extends AppCompatActivity {
         universityRV.setLayoutManager(new GridLayoutManager(this, 2));
 
         universityRV.setAdapter(adapter);
+    }
+
+    public void onUniversitySelected(String selectedUniversityName) {
+        // Check if the user has a reservation for the selected university
+        DatabaseReference reservationRef = FirebaseDatabase.getInstance().getReference("reserves");
+
+        reservationRef.orderByChild("universityName").equalTo(selectedUniversityName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // User has a reservation, start ReservationActivity with SuccessReservationFragment
+                    Intent reservationIntent = new Intent(UniversityList.this, ReservationActivity.class);
+                    reservationIntent.putExtra("selectedUniversityName", selectedUniversityName);
+                    reservationIntent.putExtra("hasReservation", true);
+                    startActivity(reservationIntent);
+                } else {
+                    // User does not have a reservation, start ReservationActivity with ReservationFragment
+                    Intent reservationIntent = new Intent(UniversityList.this, ReservationActivity.class);
+                    reservationIntent.putExtra("selectedUniversityName", selectedUniversityName);
+                    reservationIntent.putExtra("hasReservation", false);
+                    startActivity(reservationIntent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+                showToast("Error checking reservation: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void createData() {

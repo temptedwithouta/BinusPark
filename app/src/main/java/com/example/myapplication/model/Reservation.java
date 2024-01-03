@@ -8,6 +8,9 @@ public class Reservation {
     private long durasi;
     private double harga, totalHarga;
 
+    private String universityName;
+
+
     public Reservation(LocalDateTime startTime, LocalDateTime endTime, int harga){
         this.startTime = startTime;
         this.endTime = endTime;
@@ -51,6 +54,13 @@ public class Reservation {
     public void setHarga(double harga) {
         this.harga = harga;
         this.totalHarga = calculateTotalHarga();
+    }
+    public String getUniversityName() {
+        return universityName;
+    }
+
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
 
     public  double getTotalHarga(){

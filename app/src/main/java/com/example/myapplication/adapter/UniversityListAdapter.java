@@ -64,6 +64,8 @@ public class UniversityListAdapter extends RecyclerView.Adapter<UniversityViewHo
 
                 intent.putExtra("longitude", university.getLongitude());
 
+                intent.putExtra("selectedUniversityName", university.getLocation());
+
                 context.startActivity(intent);
             }
         });

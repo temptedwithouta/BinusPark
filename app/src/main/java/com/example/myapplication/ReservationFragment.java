@@ -40,14 +40,17 @@ public class ReservationFragment extends Fragment {
 
         dbReference = FirebaseDatabase.getInstance().getReference(RESERVATION_NODE);
 
-        bookButton.setOnClickListener(e -> bookReservation()); // To perform booking
+        String selectedUniversityName = getArguments().getString("selectedUniversityName");
+
+        bookButton.setOnClickListener(e -> bookReservation(selectedUniversityName)); // Pass selected university name
 
         return rootView;
     }
 
-    private void bookReservation() {
+    private void bookReservation(String selectedUniversityName) {
         String startTimeString = editTextStart.getText().toString().trim();
         String endTimeString = editTextEnd.getText().toString().trim();
+
 
         if (startTimeString.isEmpty() || endTimeString.isEmpty()) {
             showToast("Please Enter Start Time and End Time");
@@ -72,13 +75,11 @@ public class ReservationFragment extends Fragment {
 
         Reservation reservation = new Reservation(startTime.atDate(LocalDate.now()), endTime.atDate(LocalDate.now()), (int) totalHarga);
 
-        // Assuming user has selected a location before booking
-        String selectedLocation = "Binus Alam Sutera";
-
+        reservation.setUniversityName(selectedUniversityName);
         String key = dbReference.push().getKey();
         if (key != null) {
             saveReservationToFirebase(key, reservation);
-            navigateToPaymentActivity(selectedLocation, (int) totalHarga);
+            navigateToPaymentActivity(selectedUniversityName, (int) totalHarga);
         } else {
             showToast("Failed to Book Reservation");
         }
