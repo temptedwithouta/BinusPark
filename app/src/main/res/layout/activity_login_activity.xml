@@ -15,6 +15,7 @@
         android:layout_height="86dp"
         app:srcCompat="@drawable/logo" />
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,6 +76,7 @@
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
+
             <TextView
                 android:id="@+id/signupRedirectText"
                 android:layout_width="wrap_content"
@@ -86,8 +88,20 @@
                 android:textColor="#FDDCCE"
                 android:textSize="20dp" />
 
+
         </LinearLayout>
 
+
     </androidx.cardview.widget.CardView>
+
+    <Switch
+        android:id="@+id/switchTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light Mode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </LinearLayout>

@@ -204,6 +204,15 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+        boolean isDarkmodeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+        swtBtn.setChecked(isDarkmodeOn);
+        if(isDarkmodeOn){
+            swtBtn.setText("Dark Mode");
+        }else{
+            swtBtn.setText("Light Mode");
+        }
+
     }
 
     //Validates filled name

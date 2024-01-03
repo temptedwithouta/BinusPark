@@ -2,12 +2,15 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.myapplication.cookies.cookiesDb;
@@ -25,13 +28,38 @@ public class  LoginActivity extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView registerRedirectText;
-
+    Switch swtBtn;
     cookiesDb dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
+
+
+        //Switch light to dark mode settings
+        swtBtn = findViewById(R.id.switchTheme);
+        swtBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    buttonView.setText("Dark Mode");
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    buttonView.setText("Light Mode");
+                }
+            }
+        });
+
+        boolean isDarkmodeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+        swtBtn.setChecked(isDarkmodeOn);
+        if(isDarkmodeOn){
+            swtBtn.setText("Dark Mode");
+        }else{
+            swtBtn.setText("Light Mode");
+        }
+
 
         dbHandler = new cookiesDb(this);
 
