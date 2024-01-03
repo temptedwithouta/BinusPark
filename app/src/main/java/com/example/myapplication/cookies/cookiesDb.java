@@ -34,12 +34,18 @@ public class cookiesDb extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
-        String query = "CREATE TABLE " + USER_TABLE + " (" + USERID_COLUMN + " INT PRIMARY KEY AUTOINCREMENT NOT NULL, " + USERNAME_COLUMN + " VARCHAR(255) NOT NULL, " + NAME_COLUMN + " VARCHAR(255) NOT NULL, " + EMAIL_COLUMN + " VARCHAR(255) NOT NULL, " + PASSWORD_COLUMN + " VARCHAR(255) NOT NULL, " + PHONE_COLUMN + " INT NOT NULL)";
+        String query = "CREATE TABLE " + USER_TABLE + " (" +
+                USERID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                USERNAME_COLUMN + " TEXT NOT NULL, " +
+                NAME_COLUMN + " TEXT NOT NULL, " +
+                EMAIL_COLUMN + " TEXT NOT NULL, " +
+                PASSWORD_COLUMN + " TEXT NOT NULL, " +
+                PHONE_COLUMN + " INTEGER NOT NULL) ";
 
         db.execSQL(query);
     }
 
-    public void createUserCookies(String username, String name, String email, String password, String phone){
+    public void createUserCookies(String username, String name, String email, String password, int phone){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues userCookiesCV = new ContentValues();
@@ -85,6 +91,36 @@ public class cookiesDb extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.delete(USER_TABLE, USERNAME_COLUMN + "=?", new String[]{username});
+
+        db.close();
+    }
+
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "DELETE FROM " + USER_TABLE;
+
+        db.execSQL(query);
+
+        db.close();
+    }
+
+    public void updateUserCookies(String username, String name, String email, String password, int phone){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues userCookiesCV = new ContentValues();
+
+        userCookiesCV.put(NAME_COLUMN, name);
+
+        userCookiesCV.put(EMAIL_COLUMN, email);
+
+        userCookiesCV.put(PASSWORD_COLUMN, password);
+
+        userCookiesCV.put(PHONE_COLUMN, phone);
+
+        db.update(USER_TABLE, userCookiesCV, USERNAME_COLUMN + "=?", new String[]{username});
+
+        db.close();
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){

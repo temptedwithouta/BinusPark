@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.myapplication.cookies.cookiesDb;
+import com.example.myapplication.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,15 +19,34 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class  LoginActivity extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView registerRedirectText;
 
+    cookiesDb dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
+
+        dbHandler = new cookiesDb(this);
+
+        ArrayList<User> userCookies = dbHandler.getUserCookies();
+
+        if(userCookies.size() >= 1){
+            dbHandler.deleteAll();
+        }
+
+        if(!userCookies.isEmpty()){
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+
+            startActivity(intent);
+        }
+
         loginUsername = findViewById(R.id.login_username);
         loginPassword = findViewById(R.id.login_password);
         registerRedirectText = findViewById(R.id.signupRedirectText);
@@ -92,6 +113,9 @@ public class  LoginActivity extends AppCompatActivity {
                         String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
                         String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
                         String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                        Integer phoneFromDB = snapshot.child(userUsername).child("phone").getValue(Integer.class);
+
+                        dbHandler.createUserCookies(usernameFromDB, nameFromDB, emailFromDB, passwordFromDB, phoneFromDB);
 
                         IntentHelper.startDashboardActivity(LoginActivity.this, nameFromDB, emailFromDB, usernameFromDB);
 

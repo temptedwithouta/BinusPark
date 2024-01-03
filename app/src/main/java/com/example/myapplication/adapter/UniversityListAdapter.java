@@ -44,6 +44,8 @@ public class UniversityListAdapter extends RecyclerView.Adapter<UniversityViewHo
 
         viewHolder.parkingSlotTV.setText(university.getParkingSlot());
 
+//        viewHolder.itemView.setBackgroundResource(R.drawable.bekasi);
+
         try {
             viewHolder.itemView.setBackgroundResource(R.drawable.class.getField(universityLocation).getInt(null));
         } catch (NoSuchFieldException | IllegalAccessException e) {

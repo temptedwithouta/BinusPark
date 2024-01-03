@@ -27,10 +27,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getphone() {
+    public int getPhone() {
         return phone;
     }
-    public void setphone(int phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
     public User(String name, String email, String username, String password, int phone) {

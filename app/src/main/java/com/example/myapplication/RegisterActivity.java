@@ -10,9 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.cookies.cookiesDb;
 import com.example.myapplication.model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class    RegisterActivity extends AppCompatActivity {
 
@@ -22,10 +25,27 @@ public class    RegisterActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference dbReference;
 
+    cookiesDb dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        dbHandler = new cookiesDb(this);
+
+        ArrayList<User> userCookies = dbHandler.getUserCookies();
+
+        if(userCookies.size() >= 1){
+            dbHandler.deleteAll();
+        }
+
+        if(!userCookies.isEmpty()){
+            Intent intent = new Intent(RegisterActivity.this, DashboardActivity.class);
+
+            startActivity(intent);
+        }
+
         registerName = findViewById(R.id.register_name);
         registerEmail = findViewById(R.id.register_email);
         registerUsername = findViewById(R.id.register_username);

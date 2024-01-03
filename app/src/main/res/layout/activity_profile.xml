@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -110,8 +111,7 @@
                 android:text=""
                 android:hint="@string/email"
                 android:autofillHints="Email Address"
-                android:inputType="textEmailAddress"
-                android:enabled="false"/>
+                android:inputType="textEmailAddress"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,17 +121,14 @@
                 android:textColor="@color/gray"/>
 
             <EditText
-                android:enabled="false"
                 android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
-                android:text=""
                 android:hint="@string/phone"
                 android:autofillHints="Phone number"
-                android:inputType="phone"
-                />
+                android:inputType="text" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -146,11 +143,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
-                android:text="@string/profile_data4"
                 android:hint="@string/password"
                 android:autofillHints="Password"
-                android:inputType="textPassword"
-                android:enabled="false"/>
+                android:inputType="textPassword"/>
 
         </LinearLayout>
 
@@ -159,6 +154,14 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/edit"
+            android:backgroundTint="@color/purple"
+            />
+
+        <Button
+            android:id="@+id/profile_logout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Logout"
             android:backgroundTint="@color/purple"
             />
 
@@ -175,4 +178,4 @@
         app:menu="@menu/navbar_menu"
         tools:ignore="NotSibling" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

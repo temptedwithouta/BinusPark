@@ -32,7 +32,10 @@ public class UniversityList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_list);
 
+        createData();
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -51,11 +54,21 @@ public class UniversityList extends AppCompatActivity {
                         profileIntent.putExtra("username", usernameFromIntent);
                         startActivity(profileIntent);
                     }
-                    finish();
                     return true;
                 } else if (item.getItemId() == R.id.action_calender) {
-                    // Navigasi ke ReservationActivity
-                    finish();
+                    Intent receivedIntent = getIntent();
+                    if (receivedIntent != null) {
+                        String nameFromIntent = receivedIntent.getStringExtra("name");
+                        String emailFromIntent = receivedIntent.getStringExtra("email");
+                        String usernameFromIntent = receivedIntent.getStringExtra("username");
+
+                        // Pass the Intent data to ProfileActivity
+                        Intent profileIntent = new Intent(UniversityList.this, UniversityList.class);
+                        profileIntent.putExtra("name", nameFromIntent);
+                        profileIntent.putExtra("email", emailFromIntent);
+                        profileIntent.putExtra("username", usernameFromIntent);
+                        startActivity(profileIntent);
+                    }
                     return true;
                 } else if (item.getItemId() == R.id.profile) {
                     // Navigasi ke ReservationActivity
@@ -72,14 +85,11 @@ public class UniversityList extends AppCompatActivity {
                         profileIntent.putExtra("username", usernameFromIntent);
                         startActivity(profileIntent);
                     }
-                    finish();
                     return true;
                 }
                 return false;
             }
         });
-
-        createData();
 
         universityRV = findViewById(R.id.universityRV);
 
@@ -92,7 +102,7 @@ public class UniversityList extends AppCompatActivity {
 
     public void createData() {
         universityList = new ArrayList<>();
-
+//
 //        University university1 = new University("@AlamSutera", "alamsutera","-6.22366", "106.64924", "18");
 //
 //        University university2 = new University("@Anggrek", "anggrek", "-6.20071", "106.78251", "48");
@@ -123,6 +133,10 @@ public class UniversityList extends AppCompatActivity {
                     String longitude = child.child("longitude").getValue(String.class);
 
                     String parkingSlot = child.child("parkingslot").getValue(String.class);
+
+                    if(Integer.parseInt(parkingSlot) <= 0){
+                        parkingSlot = "Full";
+                    }
 
                     University university = new University(name, location, latitude, longitude, parkingSlot);
 
