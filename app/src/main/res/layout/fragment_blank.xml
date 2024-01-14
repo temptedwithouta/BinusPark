@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alamsutera"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ReservationFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/informationPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Rp. 15.000,00 / Hour"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/editTextStartTime"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/informationPrice"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/ic_history_24"
+            android:hint="Start Time"/>
+
+        <EditText
+            android:id="@+id/editTextEndTime"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/editTextStartTime"
+            android:layout_alignLeft="@id/editTextStartTime"
+            android:drawableLeft="@drawable/ic_history_24"
+            android:hint="End Time"/>
+
+        <Button
+            android:id="@+id/BookButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/editTextEndTime"
+            android:layout_alignLeft="@id/editTextStartTime"
+            android:backgroundTint="@color/BinusParkPurple"
+            android:text="Book"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/fragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>

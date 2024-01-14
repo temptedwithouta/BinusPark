@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,40 +16,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-
         tools:context=".ProfileActivity">
-            <LinearLayout
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_marginBottom="14dp">
 
                 <ImageButton
                     android:id="@+id/back"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:src="@drawable/ic_action_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/baseline_arrow_back_ios_24"
+                    android:backgroundTint="#00000000"
                     android:contentDescription="@string/back_button"
                     />
+
                 <Switch
                     android:id="@+id/switch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:text="Light Mode"
                     android:textStyle="bold"
-                    android:layout_marginStart="100dp"/>
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Theme Setter"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/switch1"/>
+                    android:textColor="@color/BinusParkPurple"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -59,6 +55,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profilePicture"
             android:layout_gravity="center"
@@ -69,6 +66,7 @@
             android:src="@drawable/cat"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -82,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_dataT1"
                 android:textSize="14sp"
-                android:textColor="@color/gray"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/full_name"
@@ -90,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
-                android:text=""
+                android:textColor="@color/black"
                 android:hint="@string/full_name"
                 android:autofillHints="Full name"
                 android:inputType="text"/>
@@ -100,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_dataT2"
                 android:textSize="14sp"
-                android:textColor="@color/gray"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/email"
@@ -108,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
-                android:text=""
+                android:textColor="@color/black"
                 android:hint="@string/email"
                 android:autofillHints="Email Address"
                 android:inputType="textEmailAddress"/>
@@ -118,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_dataT3"
                 android:textSize="14sp"
-                android:textColor="@color/gray"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/phone_number"
@@ -126,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:hint="@string/phone"
                 android:autofillHints="Phone number"
                 android:inputType="text" />
@@ -135,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profile_dataT4"
                 android:textSize="14sp"
-                android:textColor="@color/gray"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/password"
@@ -143,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:hint="@string/password"
                 android:autofillHints="Password"
                 android:inputType="textPassword"/>
@@ -153,7 +153,10 @@
             android:id="@+id/profile_update"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginVertical="14dp"
             android:text="@string/edit"
+            android:textColor="@color/white"
             android:backgroundTint="@color/purple"
             />
 
@@ -161,12 +164,15 @@
             android:id="@+id/profile_logout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:layout_marginHorizontal="14dp"
             android:text="Logout"
+            android:textColor="@color/white"
             android:backgroundTint="@color/purple"
             />
 
 
     </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

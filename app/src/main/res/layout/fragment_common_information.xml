@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/BinusParkPurple">
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="203dp"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
         android:orientation="horizontal">
 
@@ -24,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"
-            android:textSize="24sp" />
-
+            android:textSize="24sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

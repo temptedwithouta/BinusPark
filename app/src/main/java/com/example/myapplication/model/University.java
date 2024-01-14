@@ -1,15 +1,15 @@
 package com.example.myapplication.model;
 
 public class University {
-    private final String name;
+    private String name;
 
-    private final String location;
+    private String location;
 
-    private final String latitude;
+    private String latitude;
 
-    private final String longitude;
+    private String longitude;
 
-    private final String parkingSlot;
+    private String parkingSlot;
 
     public University(String name, String location, String latitude, String longitude, String parkingSlot){
         this.name = name;

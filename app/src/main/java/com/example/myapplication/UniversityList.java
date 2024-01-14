@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.myapplication.adapter.UniversityListAdapter;
+import com.example.myapplication.cookies.cookiesDb;
 import com.example.myapplication.model.University;
+import com.example.myapplication.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,14 +31,30 @@ public class UniversityList extends AppCompatActivity {
 
     private ArrayList<University> universityList;
 
+    private cookiesDb dbHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_list);
 
+        dbHandler = new cookiesDb(this);
+
+        ArrayList<User> userCookies = dbHandler.getUserCookies();
+
+        if(userCookies.size() > 1 || userCookies.isEmpty()){
+            dbHandler.deleteAll();
+
+            Intent intent = new Intent(UniversityList.this, LoginActivity.class);
+
+            startActivity(intent);
+        }
+
         createData();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setSelectedItemId(R.id.action_calender);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -94,11 +113,20 @@ public class UniversityList extends AppCompatActivity {
 
         universityRV = findViewById(R.id.universityRV);
 
-        UniversityListAdapter adapter = new UniversityListAdapter(universityList, this);
-
         universityRV.setLayoutManager(new GridLayoutManager(this, 2));
 
-        universityRV.setAdapter(adapter);
+        UniversityListAdapter adapter = new UniversityListAdapter(universityList, this);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                universityRV.setAdapter(adapter);
+            }
+        }, 6000);
+
+//        UniversityListAdapter adapter = new UniversityListAdapter(universityList, this);
+//
+//        universityRV.setAdapter(adapter);
     }
 
     public void onUniversitySelected(String selectedUniversityName) {

@@ -1,48 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
     tools:context=".SuccessActivity">
 
-  <LinearLayout
+  <TextView
+      android:id="@+id/title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:gravity="center"
-      android:orientation="vertical"
-      android:padding="16dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+      android:text="Payment Success"
+      android:textColor="@color/white"
+      android:textSize="24sp"
+      android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Payment Success"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+  <ImageView
+      android:id="@+id/QRCode"
+      android:layout_width="350px"
+      android:layout_height="350px"
+      android:clickable="true"
+      android:onClick="onImageClick"
+      android:layout_margin="32dp"
+      android:src="@drawable/success" />
 
-    <ImageView
-        android:id="@+id/QRCode"
-        android:layout_width="350px"
-        android:layout_height="350px"
-        android:clickable="true"
-        android:onClick="onImageClick"
-        android:layout_margin="32dp"
-        android:src="@drawable/success" />
+  <Button
+      android:id="@+id/homescreenBtn"
+      android:layout_width="240dp"
+      android:layout_height="60dp"
+      android:backgroundTint="@color/BinusParkPurple"
+      android:text="Back to Home Screen"
+      android:textColor="@color/white"
+      android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/homescreenBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go Back to Home Screen"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-  </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

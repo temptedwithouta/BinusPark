@@ -20,23 +20,25 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private cookiesDb dbHandler;
-
-    private ArrayList<User> userCookies;
-
-    private TextView textViewBinusPark;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_1);
         // Retrieve the data from the Intent received in DashboardActivity
 
-        dbHandler = new cookiesDb(this);
+        cookiesDb dbHandler = new cookiesDb(this);
 
-        userCookies = dbHandler.getUserCookies();
+        ArrayList<User> userCookies; userCookies = dbHandler.getUserCookies();
 
-        textViewBinusPark = findViewById(R.id.textViewBinusPark);
+        TextView textViewBinusPark = findViewById(R.id.textViewBinusPark);
+
+        if(userCookies.size() > 1 || userCookies.isEmpty()){
+            dbHandler.deleteAll();
+
+            Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
+
+            startActivity(intent);
+        }
 
         if(!userCookies.isEmpty()){
             User user = userCookies.get(0);
@@ -47,6 +49,9 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {

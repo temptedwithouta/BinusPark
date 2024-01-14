@@ -6,61 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <RelativeLayout
-        android:id="@+id/InputTime"
-        android:layout_width="379dp"
-        android:layout_height="204dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="336dp"
-        android:layout_marginEnd="16dp"
-        android:columnCount="2"
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/informationPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:text="Rp. 15.000,00 / Hour"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
-
-        <EditText
-            android:id="@+id/editTextStartTime"
-            android:layout_width="322dp"
-            android:layout_height="48dp"
-            android:layout_below="@+id/informationPrice"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="43dp"
-            android:drawableLeft="@drawable/ic_history_24"
-
-            android:padding="8dp"
-            />
-
-        <EditText
-            android:id="@+id/editTextEndTime"
-            android:layout_width="377dp"
-            android:layout_height="51dp"
-            android:layout_below="@+id/editTextStartTime"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="9dp"
-            android:drawableLeft="@drawable/ic_history_24"
-
-            android:padding="8dp"
-            />
-    </RelativeLayout>
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/fragment_search" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -72,27 +25,4 @@
         app:layout_constraintVertical_bias="0.998"
         app:menu="@menu/navbar_menu"
         tools:ignore="NotSibling" />
-
-    <Button
-        android:id="@+id/BookButton"
-        android:layout_width="377dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="32dp"
-        android:text="Book"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InputTime"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigationView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

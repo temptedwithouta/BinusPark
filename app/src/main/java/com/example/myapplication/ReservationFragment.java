@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.cookies.cookiesDb;
 import com.example.myapplication.model.Reservation;
+import com.example.myapplication.model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,6 +22,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class ReservationFragment extends Fragment {
 
@@ -29,10 +32,12 @@ public class ReservationFragment extends Fragment {
 
     private DatabaseReference dbReference;
 
+    private cookiesDb dbHandler;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.actvity_reservation, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
 
         editTextStart = rootView.findViewById(R.id.editTextStartTime);
         editTextEnd = rootView.findViewById(R.id.editTextEndTime);
@@ -40,7 +45,15 @@ public class ReservationFragment extends Fragment {
 
         dbReference = FirebaseDatabase.getInstance().getReference(RESERVATION_NODE);
 
-        String selectedUniversityName = getArguments().getString("selectedUniversityName");
+        dbHandler = new cookiesDb(getContext());
+
+        String selectedUniversityName = getActivity().getIntent().getExtras().getString("selectedUniversityName");
+
+        try {
+            rootView.setBackgroundResource(R.drawable.class.getField(selectedUniversityName).getInt(null));
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            rootView.setBackgroundResource((R.drawable.alamsutera));
+        }
 
         bookButton.setOnClickListener(e -> bookReservation(selectedUniversityName)); // Pass selected university name
 
@@ -51,6 +64,7 @@ public class ReservationFragment extends Fragment {
         String startTimeString = editTextStart.getText().toString().trim();
         String endTimeString = editTextEnd.getText().toString().trim();
 
+        ArrayList<User> userCookies = dbHandler.getUserCookies();
 
         if (startTimeString.isEmpty() || endTimeString.isEmpty()) {
             showToast("Please Enter Start Time and End Time");
@@ -73,13 +87,22 @@ public class ReservationFragment extends Fragment {
         long duration = ChronoUnit.MINUTES.between(startTime, endTime);
         double totalHarga = calculateTotalHarga(duration);
 
-        Reservation reservation = new Reservation(startTime.atDate(LocalDate.now()), endTime.atDate(LocalDate.now()), (int) totalHarga);
+        Reservation reservation = new Reservation(startTime.atDate(LocalDate.now()), endTime.atDate(LocalDate.now()),15000);
+
+        reservation.setTotalHarga(totalHarga);
 
         reservation.setUniversityName(selectedUniversityName);
+
+        if(!userCookies.isEmpty()){
+            User user = userCookies.get(0);
+
+            reservation.setUsername(user.getUsername());
+        }
+
         String key = dbReference.push().getKey();
         if (key != null) {
             saveReservationToFirebase(key, reservation);
-            navigateToPaymentActivity(selectedUniversityName, (int) totalHarga);
+            navigateToPaymentActivity(selectedUniversityName, totalHarga);
         } else {
             showToast("Failed to Book Reservation");
         }
@@ -109,8 +132,8 @@ public class ReservationFragment extends Fragment {
         return (duration / 60.0) * hargaPerHour;
     }
 
-    private void navigateToPaymentActivity(String location, int price) {
-        Intent paymentIntent = PaymentActivity.createIntent(requireContext());
+    private void navigateToPaymentActivity(String location, double price) {
+        Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
         paymentIntent.putExtra("location", location);
         paymentIntent.putExtra("price", price);
         startActivity(paymentIntent);

@@ -11,8 +11,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="187dp"
-        android:layout_height="86dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
         app:srcCompat="@drawable/logo" />
 
 
@@ -21,8 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         app:cardCornerRadius="30dp"
-        app:cardElevation="20dp"
-        app:cardBackgroundColor="@color/material_on_surface_emphasis_high_type">
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +41,6 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
-
             <EditText
                 android:id="@+id/login_username"
                 android:layout_width="match_parent"
@@ -52,7 +51,8 @@
                 android:drawablePadding="8dp"
                 android:hint="Username"
                 android:padding="8dp"
-                android:textColorHint="#9A9A9A" />
+                android:textColorHint="#9A9A9A"
+                android:textColor="@color/BinusParkPurple"/>
 
             <EditText
                 android:id="@+id/login_password"
@@ -65,7 +65,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColorHint="#9A9A9A" />
+                android:textColorHint="#9A9A9A"
+                android:textColor="@color/BinusParkPurple"/>
 
             <Button
                 android:id="@+id/login_button"
@@ -74,8 +75,8 @@
                 android:layout_marginTop="30dp"
                 android:text="Login"
                 android:textSize="18sp"
+                android:backgroundTint="@color/BinusParkPurple"
                 app:cornerRadius="20dp" />
-
 
             <TextView
                 android:id="@+id/signupRedirectText"
@@ -85,7 +86,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="or Sign up"
-                android:textColor="#FDDCCE"
+                android:textColor="@color/BinusParkPurple"
                 android:textSize="20dp" />
 
 
@@ -98,10 +99,9 @@
         android:id="@+id/switchTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Light Mode"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:textColor="@color/white"
+        android:background="@color/BinusParkPurple"/>
 
 </LinearLayout>

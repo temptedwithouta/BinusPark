@@ -1,55 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient"
     tools:context=".PaymentActivity">
 
-  <LinearLayout
+  <TextView
+      android:id="@+id/title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:gravity="center"
-      android:orientation="vertical"
-      android:padding="16dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+      android:layout_marginBottom="20dp"
+      android:text="Scan QR Code to Pay"
+      android:textColor="@android:color/black"
+      android:textSize="24sp"
+      android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Scan QR code to pay"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+  <ImageView
+      android:id="@+id/QRCode"
+      android:layout_width="750px"
+      android:layout_height="750px"
+      android:clickable="true"
+      android:onClick="onImageClick"
+      android:src="@drawable/paymentqr" />
 
-    <ImageView
-        android:id="@+id/QRCode"
-        android:layout_width="750px"
-        android:layout_height="750px"
-        android:clickable="true"
-        android:onClick="onImageClick"
-        android:src="@drawable/paymentqr" />
+  <TextView
+      android:id="@+id/location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="8dp"
+      android:text="Binus Alam Sutera"
+      android:textColor="@android:color/black"
+      android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Binus Alam Sutera"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+  <TextView
+      android:id="@+id/price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Total Fee : Rp. 25.000"
+      android:textColor="@android:color/black"
+      android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Fee : Rp. 25.000"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-  </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

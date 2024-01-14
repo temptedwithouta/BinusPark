@@ -36,7 +36,7 @@ public class    RegisterActivity extends AppCompatActivity {
 
         ArrayList<User> userCookies = dbHandler.getUserCookies();
 
-        if(userCookies.size() >= 1){
+        if(userCookies.size() > 1){
             dbHandler.deleteAll();
         }
 

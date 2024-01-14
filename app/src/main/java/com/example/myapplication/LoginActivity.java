@@ -36,6 +36,19 @@ public class  LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
 
+        dbHandler = new cookiesDb(this);
+
+        ArrayList<User> userCookies = dbHandler.getUserCookies();
+
+        if(userCookies.size() > 1){
+            dbHandler.deleteAll();
+        }
+
+        if(!userCookies.isEmpty()){
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+
+            startActivity(intent);
+        }
 
         //Switch light to dark mode settings
         swtBtn = findViewById(R.id.switchTheme);
@@ -58,21 +71,6 @@ public class  LoginActivity extends AppCompatActivity {
             swtBtn.setText("Dark Mode");
         }else{
             swtBtn.setText("Light Mode");
-        }
-
-
-        dbHandler = new cookiesDb(this);
-
-        ArrayList<User> userCookies = dbHandler.getUserCookies();
-
-        if(userCookies.size() >= 1){
-            dbHandler.deleteAll();
-        }
-
-        if(!userCookies.isEmpty()){
-            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-
-            startActivity(intent);
         }
 
         loginUsername = findViewById(R.id.login_username);

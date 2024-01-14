@@ -49,7 +49,7 @@ public class UniversityListAdapter extends RecyclerView.Adapter<UniversityViewHo
         try {
             viewHolder.itemView.setBackgroundResource(R.drawable.class.getField(universityLocation).getInt(null));
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+            viewHolder.itemView.setBackgroundResource((R.drawable.alamsutera));
         }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){

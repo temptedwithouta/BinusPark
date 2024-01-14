@@ -64,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         userCookies = dbHandler.getUserCookies();
 
-        if(userCookies.size() > 1){
+        if(userCookies.size() > 1 || userCookies.isEmpty()){
             dbHandler.deleteAll();
 
             Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
@@ -100,6 +100,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         //Bottom Navigation Bar contain passed intents of the authenticated user
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {

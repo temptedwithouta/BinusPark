@@ -5,15 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".UniversityList">
 
     <TextView
         android:id="@+id/chooseLocation"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="68dp"
+        android:layout_marginHorizontal="20dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="8dp"
-        android:text="Choose Place"/>
+        android:background="@color/white"
+        android:text="Choose Place"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/universityRV"
